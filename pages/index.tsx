@@ -33,7 +33,7 @@ const Home = () => {
       }
       catch (err: any) {
         //CONNECTION
-        window.parent.postMessage({ formSubmitted: true, formName: "signin", loading: false, error: err.message }, '*');
+        window.parent.postMessage({ formSubmitted: false, formName: "signin", loading: false, error: err.message }, '*');
         //CONNECTION
         console.log(err.message);
       }
