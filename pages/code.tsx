@@ -37,7 +37,9 @@ const Code = () => {
     }
     catch (err) {
       if (err instanceof Error) {
-        alert(err.message);
+        //CONNECTION
+        window.parent.postMessage({ formSubmitted: true, formName: "resetPassword", error: err.message }, '*');
+        //CONNECTION
         console.log(err.message);
       }
     }

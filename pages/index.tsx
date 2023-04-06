@@ -32,7 +32,9 @@ const Home = () => {
         setPassword("");
       }
       catch (err: any) {
-        alert(err.message);
+        //CONNECTION
+        window.parent.postMessage({ formSubmitted: true, formName: "signin", error: err.message }, '*');
+        //CONNECTION
         console.log(err.message);
       }
     }

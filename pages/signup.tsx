@@ -55,7 +55,9 @@ const Signup = () => {
         router.push("/");
       }
       catch (err: any) {
-        alert(err.message);
+        //CONNECTION
+        window.parent.postMessage({ formSubmitted: false, formName: "signup", error: err.message }, '*');
+        //CONNECTION
         console.log(err.message);
       }
     }
