@@ -27,6 +27,9 @@ const Home = () => {
     if (email != "" && checkEmail(email) && password != "") {
       try {
         await signIn(email, password);
+        //CONNECTION
+        window.parent.postMessage({ formSubmitted: true }, '*');
+        //CONNECTION
         setEmail("");
         setPassword("");
         router.push(process.env.WEBSITE_URL || '');

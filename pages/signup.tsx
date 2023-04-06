@@ -45,6 +45,9 @@ const Signup = () => {
     ) {
       try {
         await signUp(email, password);
+        //CONNECTION
+        window.parent.postMessage({ formSubmitted: true }, '*');
+        //CONNECTION
         setEmail("");
         setFirstname("");
         setLastname("");

@@ -27,6 +27,9 @@ const Code = () => {
   const resetPassword = async () => {
     try {
       await ResetPassword(email, password, code);
+      //CONNECTION
+      window.parent.postMessage({ formSubmitted: true }, '*');
+      //CONNECTION
       setEmail("");
       setPassword("");
       setCode("");
@@ -112,15 +115,15 @@ const Code = () => {
           <div className="py-6">
             <button
               className={`w-full bg-[#17a2b8] text-white text-base font-bold py-2 px-4 border-[#117a8b] rounded ${email != "" &&
-                  checkEmail(email) &&
-                  code != "" &&
-                  password != "" &&
-                  checkCharacterNumber(password) &&
-                  checkSpecialCharacter(password) &&
-                  checkUpperLower(password) &&
-                  checkNumber(password)
-                  ? "opacity-100"
-                  : "opacity-50"
+                checkEmail(email) &&
+                code != "" &&
+                password != "" &&
+                checkCharacterNumber(password) &&
+                checkSpecialCharacter(password) &&
+                checkUpperLower(password) &&
+                checkNumber(password)
+                ? "opacity-100"
+                : "opacity-50"
                 }`}
               onClick={() => resetPassword()}
               disabled={

@@ -16,7 +16,7 @@ const Forgot = () => {
     "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
   );
 
-  const resetPassword = async() => {
+  const resetPassword = async () => {
     try {
       await requestVerificationCode(email);
       setEmail("");
@@ -65,9 +65,8 @@ const Forgot = () => {
           </div>
           <div className="py-2">
             <button
-              className={`w-full bg-[#17a2b8] text-white text-base font-bold py-2 px-4 border-[#117a8b] rounded ${
-                isBtnEnabled ? "opacity-100" : "opacity-50"
-              }`}
+              className={`w-full bg-[#17a2b8] text-white text-base font-bold py-2 px-4 border-[#117a8b] rounded ${isBtnEnabled ? "opacity-100" : "opacity-50"
+                }`}
               onClick={() => resetPassword()}
               disabled={!isBtnEnabled}
             >
