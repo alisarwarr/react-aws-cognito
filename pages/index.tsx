@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +11,6 @@ import { signIn } from '../utils/cognito';
 
 
 const Home = () => {
-  const router = useRouter();
   const [showPassword, setShowPassword] = useState<Boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -28,11 +26,10 @@ const Home = () => {
       try {
         await signIn(email, password);
         //CONNECTION
-        window.parent.postMessage({ formSubmitted: true }, '*');
+        window.parent.postMessage({ formSubmitted: true, formName: "signin" }, '*');
         //CONNECTION
         setEmail("");
         setPassword("");
-        router.push(process.env.WEBSITE_URL || '');
       }
       catch (err: any) {
         alert(err.message);

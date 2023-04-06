@@ -28,7 +28,7 @@ const Code = () => {
     try {
       await ResetPassword(email, password, code);
       //CONNECTION
-      window.parent.postMessage({ formSubmitted: true }, '*');
+      window.parent.postMessage({ formSubmitted: true, formName: "resetPassword" }, '*');
       //CONNECTION
       setEmail("");
       setPassword("");
