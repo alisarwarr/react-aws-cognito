@@ -29,7 +29,7 @@ const Home = () => {
         await signIn(email, password);
         setEmail("");
         setPassword("");
-        router.push(process.env.WEBSITE_URL || '');
+        router.push(process.env.REACT_WEBSITE_URL || '');
       }
       catch (err: any) {
         alert(err.message);
