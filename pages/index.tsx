@@ -19,21 +19,21 @@ const Home = () => {
 
 
   const submit = async () => {
+    window.parent.postMessage({ loading: true }, '*');
     setIsEmailError(email == "" || !checkEmail(email));
     setIsPasswordError(password == "");
-
     if (email != "" && checkEmail(email) && password != "") {
       try {
         await signIn(email, password);
         //CONNECTION
-        window.parent.postMessage({ formSubmitted: true, formName: "signin" }, '*');
+        window.parent.postMessage({ formSubmitted: true, formName: "signin", loading: false }, '*');
         //CONNECTION
         setEmail("");
         setPassword("");
       }
       catch (err: any) {
         //CONNECTION
-        window.parent.postMessage({ formSubmitted: true, formName: "signin", error: err.message }, '*');
+        window.parent.postMessage({ formSubmitted: true, formName: "signin", loading: false, error: err.message }, '*');
         //CONNECTION
         console.log(err.message);
       }

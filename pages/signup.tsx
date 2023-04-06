@@ -30,6 +30,7 @@ const Signup = () => {
 
 
   const create = async () => {
+    window.parent.postMessage({ loading: true }, '*');
     setIsEmailError(email == "" || !checkEmail(email));
     setIsFirstnameError(firstname == "");
     setIsLastnameError(lastname == "");
@@ -46,7 +47,7 @@ const Signup = () => {
       try {
         await signUp(email, password);
         //CONNECTION
-        window.parent.postMessage({ formSubmitted: true, formName: "signup" }, '*');
+        window.parent.postMessage({ formSubmitted: true, formName: "signup", loading: false }, '*');
         //CONNECTION
         setEmail("");
         setFirstname("");
@@ -56,7 +57,7 @@ const Signup = () => {
       }
       catch (err: any) {
         //CONNECTION
-        window.parent.postMessage({ formSubmitted: false, formName: "signup", error: err.message }, '*');
+        window.parent.postMessage({ formSubmitted: false, formName: "signup", loading: false, error: err.message }, '*');
         //CONNECTION
         console.log(err.message);
       }

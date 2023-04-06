@@ -25,10 +25,11 @@ const Code = () => {
 
 
   const resetPassword = async () => {
+    window.parent.postMessage({ loading: true }, '*');
     try {
       await ResetPassword(email, password, code);
       //CONNECTION
-      window.parent.postMessage({ formSubmitted: true, formName: "resetPassword" }, '*');
+      window.parent.postMessage({ formSubmitted: true, formName: "resetPassword", loading: false }, '*');
       //CONNECTION
       setEmail("");
       setPassword("");
@@ -38,7 +39,7 @@ const Code = () => {
     catch (err) {
       if (err instanceof Error) {
         //CONNECTION
-        window.parent.postMessage({ formSubmitted: true, formName: "resetPassword", error: err.message }, '*');
+        window.parent.postMessage({ formSubmitted: true, formName: "resetPassword", loading: false, error: err.message }, '*');
         //CONNECTION
         console.log(err.message);
       }

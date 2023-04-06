@@ -17,14 +17,18 @@ const Forgot = () => {
   );
 
   const resetPassword = async () => {
+    window.parent.postMessage({ loading: true }, '*');
     try {
       await requestVerificationCode(email);
       setEmail("");
       router.push("/code");
+      window.parent.postMessage({ formSubmitted: true, formName: "forgot", loading: false }, '*');
     }
     catch (err) {
       if (err instanceof Error) {
-        alert(err.message);
+        //CONNECTION
+        window.parent.postMessage({ formSubmitted: true, formName: "forgot", loading: false, error: err.message }, '*');
+        //CONNECTION
         console.log(err.message);
       }
     }
