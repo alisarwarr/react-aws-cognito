@@ -66,7 +66,7 @@ const Signup = () => {
 
 
   return (
-    <div className="w-full bg-[#fff] overflow-hidden">
+    <div className="w-full bg-[#fff]">
       <Header />
       <div className="w-full flex justify-center py-8">
         <div className="w-4/5 sm:w-[60%]">
