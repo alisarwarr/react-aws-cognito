@@ -62,11 +62,11 @@ const Signup = () => {
         console.log(err.message);
       }
     }
-  };
+  }
 
 
   return (
-    <div className="w-full bg-[#fff]">
+    <div className="w-full bg-[#fff] overflow-hidden">
       <Header />
       <div className="w-full flex justify-center py-8">
         <div className="w-4/5 sm:w-[60%]">
